@@ -3,4 +3,4 @@ project(GaussJordan)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(GaussJordan main.cpp)
+add_executable(GaussJordan main.cpp GaussJordan.cpp)
