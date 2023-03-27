@@ -219,7 +219,7 @@ void Intercambiar_Filas_Colum(matriz & miMatriz)
     }
 
     // Columna llena con 0
-    for(int i = 0; i < 4 ; i++) {
+    /*for(int i = 0; i < 4 ; i++) {
         float suma_fila2 = 0;
         for (int j = 0; j < variables; j++) {
             suma_fila2 += (miMatriz[2][j] - miMatriz[2][3]);
@@ -230,5 +230,5 @@ void Intercambiar_Filas_Colum(matriz & miMatriz)
             miMatriz[i][0] = miMatriz[i][2];
             miMatriz[i][2] = columna_temp;
         }
-    }
+    }*/
 }
