@@ -24,7 +24,7 @@ template <typename matriz>
 void ImprimirSolucion(matriz & miMatriz);
 
 template <typename matriz>
-void Intercambiar_Filas(matriz & miMatriz);
+void Intercambiar_FilasyColumnas(matriz & miMatriz);
 
 int main()
 {
@@ -40,12 +40,12 @@ int main()
     LlenarMatriz(miMatriz);
 
     // Ordenamos la matriz
-    Intercambiar_Filas(miMatriz);
+    Intercambiar_FilasyColumnas(miMatriz);
 
     // Aplicamos el método de Gauss-Jordan sobre nuestra matriz
     GaussJordan(miMatriz);
 
-    // ImprimirMatriz(miMatriz);
+    ImprimirMatriz(miMatriz);
 
     // Imprimimos la solución de la matriz
     ImprimirSolucion(miMatriz);
@@ -191,8 +191,9 @@ void    GaussJordan(matriz & miMatriz)
 }
 
 template <typename matriz>
-void Intercambiar_Filas(matriz & miMatriz)
+void Intercambiar_FilasyColumnas(matriz & miMatriz)
 {
+    int variables = miMatriz.size();
     for(int i = 0; i < 4 ; i++) {
         if (miMatriz[0][0] == 0) {
             if (miMatriz[1][0] == 0) {
@@ -210,6 +211,22 @@ void Intercambiar_Filas(matriz & miMatriz)
                     miMatriz[1][j] = temp;
                 }
             }
+        }
+    }
+
+    // Ideterminacion columnas
+    for (int j = 0; j < 2; j++) {
+        float suma_colum = 0;
+        for (int i = 0; i < variables; i++){
+            suma_colum += miMatriz[i][j];
+        }
+        if (suma_colum == 0) {
+            for (int i = 0; i < variables; i++){
+                int colum_temp = miMatriz[i][j];
+                miMatriz[i][j] = miMatriz[i][2];
+                miMatriz[i][2] = colum_temp;
+            }
+            return;
         }
     }
 }
